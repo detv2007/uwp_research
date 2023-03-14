@@ -1,0 +1,158 @@
+﻿<Page x:Name="RootPage"
+    x:Class="AppUWPR.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="using:AppUWPR.Data"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Images/System/background1.jpg"/>
+    </Page.Background>
+
+    <Page.Resources>
+        <!--TextBlock Title-->
+        <Style x:Key="TextBlockTitleStyleForDesktop" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFF7200A" />
+            <Setter Property="MinWidth" Value="900" />
+            <Setter Property="FontSize" Value="25" />
+        </Style>
+        <Style x:Key="TextBlockTitleStyleForTablet" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF1CF70A" />
+            <Setter Property="MinWidth" Value="600" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style x:Key="TextBlockTitleStyleForPhone" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFF5F70A" />
+            <Setter Property="MinWidth" Value="300" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <!--TextBlock Title-->
+
+        <!--TextBlock PriceAndDesc-->
+        <Style x:Key="TextBlockPriceAndDescStyleForDesktop" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="MinWidth" Value="900" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style x:Key="TextBlockPriceAndDescStyleForTablet" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="MinWidth" Value="600" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style x:Key="TextBlockPriceAndDescStyleForPhone" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="MinWidth" Value="300" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <!--TextBlock PriceAndDesc-->
+
+        <!--Image News-->
+        <Style x:Key="ImageStyleForDesktop" TargetType="Image">
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="150" />
+        </Style>
+        <Style x:Key="ImageStyleForTablet" TargetType="Image">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+        </Style>
+        <Style x:Key="ImageStyleForPhone" TargetType="Image">
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="80" />
+        </Style>
+        <!--Image News-->
+    </Page.Resources>
+
+    <Grid x:Name="MainGrid">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="DesktopLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="TabletLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="PhoneLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <GridView x:Name="GridViewNews" ItemsSource="{x:Bind Items}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:NewsItem">
+                        <UserControl>
+                            <Grid x:Name="GridNewsItem">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="DesktopLayout">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="1024"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="StackPanelNews.Margin" Value="10,20,10,0"/>
+                                                <Setter Target="GridNewsItem.ColumnDefinitions[0].Width" Value="150"/>
+                                                <Setter Target="txtTitle.Style" Value="{StaticResource TextBlockTitleStyleForDesktop}"/>
+                                                <Setter Target="txtPrice.Style" Value="{StaticResource TextBlockPriceAndDescStyleForDesktop}"/>
+                                                <Setter Target="txtDescription.Style" Value="{StaticResource TextBlockPriceAndDescStyleForDesktop}"/>
+                                                <Setter Target="ImageNews.Style" Value="{StaticResource ImageStyleForDesktop}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="TabletLayout">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="720"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="GridNewsItem.ColumnDefinitions[0].Width" Value="100"/>
+                                                <Setter Target="txtTitle.Style" Value="{StaticResource TextBlockTitleStyleForTablet}"/>
+                                                <Setter Target="txtPrice.Style" Value="{StaticResource TextBlockPriceAndDescStyleForTablet}"/>
+                                                <Setter Target="txtDescription.Style" Value="{StaticResource TextBlockPriceAndDescStyleForTablet}"/>
+                                                <Setter Target="ImageNews.Style" Value="{StaticResource ImageStyleForTablet}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PhoneLayout">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="0" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="GridNewsItem.ColumnDefinitions[0].Width" Value="80"/>
+                                                <Setter Target="txtTitle.Style" Value="{StaticResource TextBlockTitleStyleForPhone}"/>
+                                                <Setter Target="txtPrice.Style" Value="{StaticResource TextBlockPriceAndDescStyleForPhone}"/>
+                                                <Setter Target="txtDescription.Style" Value="{StaticResource TextBlockPriceAndDescStyleForPhone}"/>
+                                                <Setter Target="ImageNews.Style" Value="{StaticResource ImageStyleForPhone}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" x:Name="ImageNews" Source="{x:Bind ImagePath}" Style="{StaticResource ImageStyleForPhone}" Margin="5 0 0 0"></Image>
+                                <StackPanel Grid.Column="1" x:Name="StackPanelNews" Margin="10,10,10,0">
+                                    <TextBlock x:Name="txtTitle" Text="{x:Bind Title}" TextWrapping="WrapWholeWords" Style="{StaticResource TextBlockTitleStyleForPhone}"></TextBlock>
+                                    <TextBlock x:Name="txtPrice" Text="{x:Bind StrPrice}" Style="{StaticResource TextBlockPriceAndDescStyleForPhone}"></TextBlock>
+                                    <TextBlock x:Name="txtDescription" Text="{x:Bind Description}" Style="{StaticResource TextBlockPriceAndDescStyleForPhone}"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </UserControl>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+    </Grid>
+</Page>

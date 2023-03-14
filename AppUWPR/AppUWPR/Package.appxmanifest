@@ -7,16 +7,16 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="f377a9b3-badf-4099-9101-80abf6d2e2db"
-    Publisher="CN=VAN DE"
+    Name="646a30ca-d807-4074-bdf7-bbae66a0b30c"
+    Publisher="CN=DETV"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="f377a9b3-badf-4099-9101-80abf6d2e2db" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="646a30ca-d807-4074-bdf7-bbae66a0b30c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>UWPDemo</DisplayName>
-    <PublisherDisplayName>VAN DE</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <DisplayName>AppUWPR</DisplayName>
+    <PublisherDisplayName>DETV</PublisherDisplayName>
+    <Logo>Assets\fptSoftwareLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -30,15 +30,20 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="UWPDemo.App">
+      EntryPoint="AppUWPR.App">
       <uap:VisualElements
-        DisplayName="UWPDemo"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="UWPDemo"
+        DisplayName="App UWP Demo"
+        Square150x150Logo="Assets\fptSoftwareLogo.png"
+        Square44x44Logo="Assets\fptSoftwareLogo.png"
+        Description="AppUWPR"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\fptSoftwareLogo.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\fptSoftwareLogo.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
